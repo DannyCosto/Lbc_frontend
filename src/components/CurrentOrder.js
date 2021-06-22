@@ -42,11 +42,23 @@ function CurrentOrder() {
     );
   });
 
+  function handleClick(e) {
+    fetch(`http://localhost:3000/api/v1/orders/${orderId}/transform`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `bearer ${localStorage.token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((current_cart) => setCurrentOrder(current_cart));
+  }
+
   return (
     <div>
       <h2>Current Order</h2>
       <h3>{currentItems}</h3>
       <h1>Total:${totalOrder}</h1>
+      <button onClick={handleClick}>Check Out</button>
     </div>
   );
 }
