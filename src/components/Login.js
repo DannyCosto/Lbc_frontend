@@ -32,30 +32,40 @@ function Login({ setItems }) {
         }
         localStorage.token = userInfo.token;
         localStorage.setItem(`userId`, `${userInfo.user.id}`);
+        window.location.href = "/home";
       });
     console.log(localStorage.token);
   }
   return (
-    <>
-      <label>Login</label>
-      <form onSubmit={handleLogin}>
-        <label>Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button as="button" type="submit">
+    <div className="ui inverted segment">
+      <form onSubmit={handleLogin} className="ui inverted form">
+        <div className="field">
+          <label>Login</label>
+          <label>Username:</label>
+          <br />
+          <input
+            className="field"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>{" "}
+        <br />
+        <div className="field">
+          <label>Password:</label> <br />
+          <input
+            className="field"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>{" "}
+        <hr />
+        <button className="ui button" as="button" type="submit">
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,21 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import CurrentCardItem from "./CurrentCardItem";
+import styled from "styled-components";
+
+const Grid = styled.div`
+display: grid;
+grid-template-columns: repeat(1, 1fr);
+grid-gap: 20px:
+width: 20px;
+padding:20px;
+`;
+
+const Container = styled.div`
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+`;
 
 function CurrentOrder() {
   const [currentOrder, setCurrentOrder] = useState([]);
@@ -51,16 +66,21 @@ function CurrentOrder() {
     })
       .then((r) => r.json())
       .then((current_cart) => setCurrentOrder(current_cart));
+    window.location.reload(false);
   }
 
   return (
     <div>
       <h2>Current Order</h2>
-      <h3>{currentItems}</h3>
-      <h1>Total:${totalOrder}</h1>
-      <button onClick={handleClick}>Check Out</button>
+      <Grid>{currentItems}</Grid>
+      <hr />
+      <Container>
+        <h1>Total:${totalOrder}</h1>
+        <button className="ui submit button" onClick={handleClick}>
+          Check Out
+        </button>
+      </Container>
     </div>
   );
 }
-
 export default CurrentOrder;

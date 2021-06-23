@@ -1,5 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const Image = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const Container = styled.div`
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+`;
 
 function ItemShow() {
   const [item, setItem] = useState([]);
@@ -34,18 +47,21 @@ function ItemShow() {
       });
   }
   return (
-    <>
-      <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <img src={img} alt={name} height="500px" />
+    <div className="ui inverted segment">
+      <Container>
+        <form onSubmit={(e) => handleSubmit(e)} className="ui inverted form">
+          <hr />
+          <Image src={img} alt={name} height="500px" />
           <h1>{name}</h1>
           <p>{description}</p>
           <h3>${price}</h3>
-
-          <button type="submit">Add to Cart</button>
+          <hr />
+          <button className="ui submit button" type="submit">
+            Add to Cart
+          </button>
         </form>
-      </div>
-    </>
+      </Container>
+    </div>
   );
 }
 

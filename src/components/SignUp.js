@@ -31,52 +31,60 @@ function SignUp() {
       .then((resp) => {
         localStorage.token = resp.token;
       });
+    window.location.href = "/login";
   }
   return (
-    <>
-      <label>Sign Up</label>
-      <form onSubmit={handlesignup}>
-        <label>Username</label>
+    <div className="ui inverted segment">
+      <form onSubmit={handlesignup} className="ui inverted form">
+        <label>Sign Up</label> <br />
+        <label>Username:</label>
         <input
+          className="field"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label>Password</label>
+        <label>Password:</label>
         <input
+          className="field"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label>First Name</label>
+        <label>First Name:</label>
         <input
+          className="field"
           type="text"
           value={first_name}
           onChange={(e) => setFirst_name(e.target.value)}
         />
-        <label>Last Name</label>
+        <label>Last Name:</label>
         <input
+          className="field"
           type="text"
           value={last_name}
           onChange={(e) => setLast_name(e.target.value)}
         />
-        <label>E-mail</label>
+        <label>E-mail:</label>
         <input
+          className="field"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label>Shipping Address</label>
+        <label>Shipping Address:</label>
         <input
+          className="field"
           type="text"
           value={ship_add}
           onChange={(e) => setShip_add(e.target.value)}
         />
-        <button as="button" type="submit">
+        <hr />
+        <button className="ui submit button" as="button" type="submit">
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
